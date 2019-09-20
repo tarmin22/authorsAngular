@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="col-4 mx-auto">
+    <h3>Favorite authors</h3>
+    <a [routerLink]="['/']">Home</a>
+
+    <div *ngIf="showCreate == true">
+      <p>We're sorry, but we could not find the author you are looking for. Would you like to add this author to our
+        database? Use the Add Author link below to add the new author.</p>
+      <a [routerLink]="['/new']">Add Author</a>
+    </div>
+
+    <form (submit)="onEdit(updateAuthor._id)">
+      <!-- use the json pipe to see how newTask changes in real time -->
+      <p>{{ newTask | json }} </p>
+      <div class="form-group">
+
+
+        <div *ngFor="let error of errors">
+          <p class="text-danger">{{error}}</p>
+        </div>
+
+        <label>Edit this author:</label>
+        <input type="text" class="form-control" name="updateAuthor.name" [(ngModel)]="updateAuthor.name">
+
+      </div>
+
+      <a [routerLink]="['/']" class="btn btn-secondary b" role="button">Cancel</a>
+      <input class="btn btn-primary btn ml-4" type="submit" value="Submit" />
+
+    </form>
+  </div>
+
+</div>
